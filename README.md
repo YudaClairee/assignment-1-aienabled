@@ -8,20 +8,20 @@ My Portfolio Management API
 Contoh endpoint assets:
 GET /api/assets
 gambar:
-![GET /api/assets](image/get_assets.png)
+![GET /api/assets](image/get-assets.png)
 
 POST /api/assets
 gambar:
-![POST /api/assets](image/post_asset.png)
+![POST /api/assets](image/post-asset.png)
 
 Contoh endpoint portfolios:
 
 GET /api/portfolios
 gambar:
-![GET /api/portfolios](image/get_portfolios.png)
+![GET /api/portfolios](image/get-portfolios.png)
 
 POST /api/portfolios
 gambar:
-![POST /api/portfolios](image/post_portfolio.png)
+![POST /api/portfolios](image/post-portfolio.png)
 
 UNTUK GET BY ID DI KEDUA ENDPOINT TINGGAL ISI PATH PARAMETER ID YANG DIINGINKAN pada Variables di scalar
