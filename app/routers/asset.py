@@ -17,7 +17,7 @@ def get_assets(params = Depends(standard_params), db = Depends(get_db)):
     return assets
 
 @asset_router.post("/assets", status_code=status.HTTP_201_CREATED, response_model=AssetCreate)
-def create_assets(body: AssetCreate, params = Depends(standard_params), db = Depends(get_db)):
+def create_assets(body: AssetCreate, db = Depends(get_db)):
     new_asset = Asset(
         ticker=body.ticker,
         amount=body.amount,
@@ -29,7 +29,7 @@ def create_assets(body: AssetCreate, params = Depends(standard_params), db = Dep
     return new_asset
 
 @asset_router.get("/assets/{asset_id}", status_code=status.HTTP_200_OK, response_model=AssetResponse)
-def get_asset(asset_id: uuid.UUID, params = Depends(standard_params), db = Depends(get_db)):
+def get_asset(asset_id: uuid.UUID, db = Depends(get_db)):
     stmt = select(Asset).where(Asset.id == asset_id)
     result = db.exec(stmt)
     asset = result.first()

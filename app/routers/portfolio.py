@@ -27,7 +27,7 @@ def create_portfolios(body: PortfolioCreate, db = Depends(get_db)):
     return new_portfolio
 
 @portfolio_router.get("/portfolios/{portfolio_id}", status_code=status.HTTP_200_OK, response_model=PortfolioResponse)
-def get_portfolio(portfolio_id: uuid.UUID, params = Depends(standard_params), db = Depends(get_db)):
+def get_portfolio(portfolio_id: uuid.UUID, db = Depends(get_db)):
     stmt = select(Portfolio).where(Portfolio.id == portfolio_id)
     result = db.exec(stmt)
     portfolio = result.first()
