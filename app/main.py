@@ -1,8 +1,9 @@
 from fastapi import FastAPI
 from scalar_fastapi import get_scalar_api_reference
 
-from app.core.settings import Settings, settings
+from app.core.settings import settings
 from app.routers.asset import asset_router
+from app.routers.portfolio import portfolio_router
 
 app = FastAPI(
     docs_url=None,
@@ -12,6 +13,7 @@ app = FastAPI(
 ) 
 
 app.include_router(asset_router, prefix="/api")
+app.include_router(portfolio_router, prefix="/api")
 
 @app.get("/")
 def hello():
