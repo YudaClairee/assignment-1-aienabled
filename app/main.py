@@ -17,7 +17,7 @@ app.include_router(portfolio_router, prefix="/api")
 
 @app.get("/")
 def hello():
-    return {"Message": "Welcome to Mini Stock API"}
+    return {"Message": "Welcome to Portfolio Management API"}
 
 @app.get("/scalar")
 def scalar_doc():
