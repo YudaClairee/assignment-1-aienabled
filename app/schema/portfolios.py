@@ -7,7 +7,7 @@ class PortfolioResponse(BaseModel):
     id: uuid.UUID
     name: str
     description: str
-    assets: list[AssetResponse]
+    assets: list[AssetResponse] = []
 
 class PortfolioCreate(BaseModel):
     name: str
