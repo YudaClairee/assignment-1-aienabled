@@ -17,7 +17,7 @@ def get_portfolios(params = Depends(standard_params), db = Depends(get_db)):
     return portfolios
 
 @portfolio_router.post("/portfolios", status_code=status.HTTP_201_CREATED, response_model=PortfolioCreate)
-def create_portfolios(body: PortfolioCreate, params = Depends(standard_params), db = Depends(get_db)):
+def create_portfolios(body: PortfolioCreate, db = Depends(get_db)):
     new_portfolio = Portfolio(
         name=body.name,
         description=body.description
