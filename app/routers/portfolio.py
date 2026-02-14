@@ -41,3 +41,20 @@ def get_portfolio(portfolio_id: uuid.UUID, db = Depends(get_db)):
     
     except Exception as e:
         raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+    
+@portfolio_router.delete("/portfolios/{portfolio_id}", status_code=status.HTTP_204_NO_CONTENT)
+def delete_portfolio(portfolio_id: uuid.UUID, db = Depends(get_db)):
+    try:
+        stmt = select(Portfolio).where(Portfolio.id == portfolio_id)
+        result = db.exec(stmt)
+        portfolio = result.first()
+        
+        if not portfolio:
+            raise HTTPException(status_code=status.HTTP_204_NO_CONTENT, detail="Portfolio not found")
+        
+        db.delete(portfolio)
+        db.commit()
+        return
+    
+    except Exception as e:
+        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
